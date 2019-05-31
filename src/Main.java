@@ -16,7 +16,7 @@ public class Main {
 
     }
 
-    public static String reverseAlphaNumeric(String str) {
+    private static String reverseAlphaNumeric(String str) {
 
         StringBuilder builder = new StringBuilder();
 
@@ -44,7 +44,7 @@ public class Main {
         return null;
     }
 
-    public static boolean isAlphaNum(String letter) {
+    private static boolean isAlphaNum(String letter) {
         Pattern pattern  = Pattern.compile("(\\w|\\d){1}");
         Matcher matcher = pattern.matcher(letter);
         return matcher.matches();
