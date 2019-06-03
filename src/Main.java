@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String str = "ab.c-de-f!g.";
+        String str = "ab.c-de-f!g96_.";
 
         String result = reverseAlphaNumeric(str);
 
@@ -30,22 +30,21 @@ public class Main {
     }
 
     private static AbstractMap.SimpleEntry<Integer, String> handleIndex(String str, StringBuilder builder, int i) {
+
         String letter = String.valueOf(str.charAt(i));
 
-        if (!isAlphaNum(letter)) {
-            if(i == str.length()-1) builder.reverse();
-            return new AbstractMap.SimpleEntry<Integer, String>(i, letter);
-        }else {
-            builder.append(letter);
-            if(i == str.length()-1) builder.reverse();
-        }
+        AbstractMap.SimpleEntry<Integer, String> result = null;
 
+        if (!isAlphaNum(letter)) result = new AbstractMap.SimpleEntry<Integer, String>(i, letter);
+        else builder.append(letter);
 
-        return null;
+        if(i == str.length()-1) builder.reverse();
+
+        return result;
     }
 
     private static boolean isAlphaNum(String letter) {
-        Pattern pattern  = Pattern.compile("(\\w|\\d){1}");
+        Pattern pattern  = Pattern.compile("([A-Za-z]|\\d)");
         Matcher matcher = pattern.matcher(letter);
         return matcher.matches();
     }
